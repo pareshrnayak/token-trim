@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/token-trim-banner.svg" alt="token-trim banner" width="100%">
+</p>
+
 # token-trim
 
 Intelligently prune Python code and log files to reduce LLM context window usage and lower API costs.
@@ -20,7 +24,10 @@ Large Language Models (LLMs) have limited context windows and charge based on th
 * Falls back to line-based cleaning for non-Python files (such as logs)
 * Reports token counts before and after pruning
 * Calculates percentage of tokens saved
-* Clean command-line interface powered by `rich`
+* Supports copying pruned output directly to system clipboard
+* Supports recursive directory and multi-file batch processing
+* Supports in-place file overwriting
+* Clean command-line interface powered by `rich` and `typer`
 
 ---
 
