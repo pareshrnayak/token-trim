@@ -44,7 +44,7 @@ If the input is not valid Python, `token-trim` automatically falls back to a lin
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/token-trim.git
+git clone https://github.com/pareshrnayak/token-trim.git
 cd token-trim
 ```
 
