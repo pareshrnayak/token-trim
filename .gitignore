@@ -1,0 +1,16 @@
+cat << 'EOF' > .gitignore
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Environment and IDE settings
+.env
+.vscode/
+.idea/
+EOF
