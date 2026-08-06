@@ -1,4 +1,3 @@
-````markdown
 # Contributing to `token-trim`
 
 Thank you for your interest in contributing to **token-trim**. Contributions of all kinds are welcome, including bug fixes, new features, documentation improvements, performance optimizations, and code quality enhancements.
@@ -215,4 +214,3 @@ Finally, open a Pull Request and provide a clear description of your contributio
 # Thank You
 
 Thank you for taking the time to contribute to **token-trim**. Every contribution, whether it is a bug fix, feature improvement, documentation update, or code cleanup, helps make the project better for everyone.
-````
