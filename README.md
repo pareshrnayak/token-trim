@@ -187,6 +187,3 @@ If you'd like to contribute, please read **CONTRIBUTING.md** for instructions on
 ## License
 
 This project is licensed under the MIT License. See the **LICENSE** file for more information.
-
-```
-```
