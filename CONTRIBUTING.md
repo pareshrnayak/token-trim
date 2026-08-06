@@ -1,14 +1,14 @@
 # Contributing to `token-trim`
 
-Thank you for your interest in contributing to **token-trim**. Contributions of all kinds are welcome, including bug fixes, new features, documentation improvements, performance optimizations, and code quality enhancements.
+Thank you for your interest in contributing to **token-trim**. Contributions of all kinds are welcome, including bug fixes, new features, documentation improvements, performance optimizations, tests, and code quality enhancements.
 
-Please follow the guidelines below to ensure a smooth development and review process.
+Please follow the guidelines below to set up your development environment and submit high-quality contributions.
 
 ---
 
-# Local Development
+## Local Development
 
-## 1. Fork and Clone the Repository
+### 1. Fork and Clone the Repository
 
 Fork the repository on GitHub, then clone your fork locally.
 
@@ -19,18 +19,18 @@ cd token-trim
 
 ---
 
-## 2. Create a Virtual Environment
+### 2. Create a Virtual Environment
 
 Create and activate a Python virtual environment.
 
-### macOS / Linux
+#### macOS / Linux
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Windows
+#### Windows
 
 ```powershell
 python -m venv venv
@@ -39,29 +39,31 @@ venv\Scripts\activate
 
 ---
 
-## 3. Install Dependencies
+### 3. Install Development Dependencies
 
-Install all required packages.
+Install the project in editable mode along with the development dependencies.
 
 ```bash
-pip install -r requirements.txt
+pip install -e .[dev]
 ```
+
+Installing in editable mode (`-e`) links the source code directly to your virtual environment, allowing changes to take effect immediately without reinstalling the package.
 
 ---
 
-# Development Workflow
+## Development Workflow
 
-## 1. Create a Branch
+### 1. Create a Branch
 
 Create a dedicated branch for your work.
 
-For new features:
+For a new feature:
 
 ```bash
 git checkout -b feat/your-feature-name
 ```
 
-For bug fixes:
+For a bug fix:
 
 ```bash
 git checkout -b fix/issue-description
@@ -69,29 +71,67 @@ git checkout -b fix/issue-description
 
 ---
 
-## 2. Make Your Changes
+### 2. Make Your Changes
 
-Implement your changes while keeping the codebase clean, readable, and consistent with the existing style.
+Keep your changes focused, readable, and consistent with the existing codebase.
 
-After making changes, test the CLI against one or more sample Python files.
+Test the CLI using one or more sample files.
 
-Example:
+Basic usage:
 
 ```bash
-python app.py prune test_file.py
+token-trim path/to/sample.py
 ```
 
-Verify that:
+Test clipboard support:
 
-- Python syntax remains valid
-- Output is correct
-- No unexpected behavior is introduced
+```bash
+token-trim path/to/sample.py -c
+```
+
+Test in-place file writing:
+
+```bash
+token-trim path/to/sample.py -w
+```
+
+If your changes affect batch processing, test them against a directory as well.
 
 ---
 
-## 3. Commit Your Changes
+### 3. Run Quality Checks
 
-Use clear and descriptive commit messages following the Conventional Commits specification.
+Before committing your changes, run the following checks.
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+Run the linter:
+
+```bash
+ruff check .
+```
+
+Format the code:
+
+```bash
+black .
+```
+
+Optionally verify that the package builds successfully:
+
+```bash
+python -m build
+```
+
+---
+
+### 4. Commit Your Changes
+
+Use clear and descriptive commit messages that follow the Conventional Commits specification.
 
 Example:
 
@@ -102,16 +142,16 @@ git commit -m "feat: add support for stripping inline comments"
 
 Common commit prefixes:
 
-- `feat:` — New feature
-- `fix:` — Bug fix
-- `docs:` — Documentation
-- `refactor:` — Code refactoring
-- `test:` — Tests
-- `chore:` — Maintenance tasks
+* `feat:` — New feature
+* `fix:` — Bug fix
+* `docs:` — Documentation
+* `refactor:` — Code refactoring
+* `test:` — Tests
+* `chore:` — Maintenance tasks
 
 ---
 
-## 4. Push Your Branch
+### 5. Push Your Branch
 
 Push your branch to your fork.
 
@@ -119,98 +159,77 @@ Push your branch to your fork.
 git push origin feat/your-feature-name
 ```
 
-Then open a Pull Request on GitHub.
+Then open a Pull Request against the `main` branch.
 
 ---
 
-# Pull Request Guidelines
+## Pull Request Guidelines
 
-Before opening a Pull Request, please ensure that:
+Before submitting a Pull Request, please ensure that:
 
-- Your code follows the existing project style.
-- The project runs without errors.
-- Generated Python code remains syntactically valid.
-- Your changes have been tested with real `.py` files.
-- Documentation is updated where necessary.
-- Commit messages follow the Conventional Commits format.
-- Your Pull Request clearly explains:
-  - What changed
-  - Why it was changed
-  - Any important implementation details
+* All tests pass successfully.
+* Linting passes without errors.
+* Code is properly formatted.
+* Generated Python code remains syntactically valid after pruning.
+* Documentation is updated when necessary.
+* Commit messages follow the Conventional Commits specification.
+* Your Pull Request includes a clear description of:
 
-Keeping Pull Requests focused and reasonably small helps reviewers provide faster feedback.
+  * What changed
+  * Why it changed
+  * Any important implementation details
 
----
-
-# Reporting Bugs
-
-If you discover a bug, please check whether it has already been reported.
-
-If not, open a new GitHub Issue and include:
-
-- A clear description of the problem
-- Steps to reproduce the issue
-- Expected behavior
-- Actual behavior
-- Python version
-- Operating system
-- Relevant error messages or screenshots (if applicable)
+Keeping Pull Requests focused and reasonably small makes them easier to review and merge.
 
 ---
 
-# Feature Requests
+## Reporting Bugs
 
-Feature suggestions are welcome.
+Before opening a new issue, please check the existing GitHub Issues to avoid duplicates.
 
-When creating a feature request, please include:
+If the issue has not already been reported, include the following information:
 
-- The problem you are trying to solve
-- Your proposed solution
-- Any alternative approaches you considered
-- Additional context, if applicable
-
----
-
-# Code Style
-
-Please keep contributions consistent with the existing codebase.
-
-General recommendations:
-
-- Write readable, maintainable code.
-- Keep functions focused and concise.
-- Avoid unnecessary complexity.
-- Add comments only where they improve clarity.
-- Prefer descriptive variable and function names.
+* A clear description of the problem
+* Steps to reproduce the issue
+* Expected behavior
+* Actual behavior
+* Python version (`python --version`)
+* Operating system
+* Relevant error messages or stack traces
 
 ---
 
-# Testing
+## Feature Requests
 
-Before submitting your contribution, verify that:
+Feature suggestions are always welcome.
 
-```bash
-python app.py prune sample.py
-```
+When submitting a feature request, please include:
 
-Test with multiple Python files whenever possible to ensure the output remains correct.
-
----
-
-# Submitting Your Contribution
-
-Once everything is ready:
-
-```bash
-git add .
-git commit -m "feat: your concise description"
-git push origin your-branch-name
-```
-
-Finally, open a Pull Request and provide a clear description of your contribution.
+* The problem you are trying to solve
+* Your proposed solution
+* Any alternative approaches you considered
+* Additional context or examples, if applicable
 
 ---
 
-# Thank You
+## Code Style
 
-Thank you for taking the time to contribute to **token-trim**. Every contribution, whether it is a bug fix, feature improvement, documentation update, or code cleanup, helps make the project better for everyone.
+To keep the project consistent:
+
+* Write clean, readable, and maintainable code.
+* Prefer descriptive variable and function names.
+* Keep functions focused on a single responsibility.
+* Avoid unnecessary complexity.
+* Add comments only where they improve understanding.
+
+---
+
+## Questions
+
+If you have questions about contributing or are unsure whether a change is appropriate, feel free to open an issue to discuss it before starting work.
+
+---
+
+## Thank You
+
+Thank you for taking the time to contribute to **token-trim**. Every contribution—whether it's a bug fix, feature, documentation improvement, test, or refactoring—helps make the project better for everyone.
