@@ -13,7 +13,7 @@ Please follow the guidelines below to ensure a smooth development and review pro
 Fork the repository on GitHub, then clone your fork locally.
 
 ```bash
-git clone https://github.com/your-username/token-trim.git
+git clone https://github.com/pareshrnayak/token-trim.git
 cd token-trim
 ```
 
