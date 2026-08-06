@@ -4,32 +4,36 @@
 
 # token-trim
 
+[![PyPI Version](https://img.shields.io/pypi/v/token-trim-cli.svg)](https://pypi.org/project/token-trim-cli/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/token-trim-cli.svg)](https://pypi.org/project/token-trim-cli/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Intelligently prune Python code and log files to reduce LLM context window usage and lower API costs.
 
-`token-trim` is a lightweight command-line utility built with **Python**, **AST**, **Typer**, **Rich**, and **tiktoken**. It removes docstrings, strips comments, normalizes whitespace, and measures token savings while preserving valid Python syntax.
+`token-trim` is a lightweight command-line utility built with **Python**, **AST**, **Typer**, **Rich**, and **tiktoken**. It removes unnecessary content such as docstrings, comments, and excess whitespace while preserving valid Python syntax and reporting token savings.
 
 ---
 
 ## Overview
 
-Large Language Models (LLMs) have limited context windows and typically charge based on the number of input tokens. Python source files often contain docstrings, comments, blank lines, and formatting that increase token usage without affecting program execution.
+Large Language Models (LLMs) have limited context windows and often charge based on the number of input tokens. Source files frequently contain comments, docstrings, and formatting that increase token usage without affecting program execution.
 
-`token-trim` removes unnecessary content while preserving the behavior of your code, making it ideal for preparing files before sending them to an LLM.
+`token-trim` removes this unnecessary content, helping you optimize prompts before sending code to an LLM.
 
 ---
 
 ## Features
 
-- AST-based Python code pruning
-- Removes module, class, and function docstrings
-- Preserves valid Python syntax, including empty function bodies
-- Falls back to line-based cleaning for non-Python files (such as logs)
-- Reports token counts before and after pruning
-- Calculates token savings and percentage reduction
-- Supports copying pruned output directly to the clipboard (`-c`, `--copy`)
-- Supports recursive directory and batch processing
-- Supports overwriting files in place (`-w`, `--write`)
-- Clean command-line interface powered by **Rich** and **Typer**
+* AST-based Python code pruning
+* Removes module, class, and function docstrings
+* Preserves valid Python syntax, including empty function bodies
+* Falls back to line-based cleanup for non-Python files (such as logs)
+* Reports token counts before and after pruning
+* Calculates token savings and percentage reduction
+* Copies pruned output directly to the system clipboard (`-c`, `--copy`)
+* Supports recursive directory and batch processing
+* Supports in-place file overwriting (`-w`, `--write`)
+* Clean and user-friendly command-line interface powered by **Rich** and **Typer**
 
 ---
 
@@ -37,7 +41,7 @@ Large Language Models (LLMs) have limited context windows and typically charge b
 
 For Python files, `token-trim`:
 
-1. Parses source code using Python's built-in `ast` module.
+1. Parses the source code using Python's built-in `ast` module.
 2. Traverses the Abstract Syntax Tree (AST).
 3. Removes module, class, and function docstrings.
 4. Reconstructs valid Python code using `ast.unparse()`.
@@ -49,45 +53,16 @@ If the input is not valid Python, `token-trim` automatically switches to a line-
 
 ## Installation
 
-### Requirements
-
-- Python 3.8 or later
-
-### Clone the Repository
+### Install from PyPI
 
 ```bash
-git clone https://github.com/pareshrnayak/token-trim.git
-cd token-trim
+pip install token-trim-cli
 ```
 
-### Create a Virtual Environment (Recommended)
-
-#### macOS / Linux
+Verify the installation:
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-#### Windows
-
-```powershell
-python -m venv venv
-venv\Scripts\activate
-```
-
-### Install the Package
-
-Install `token-trim` in editable mode:
-
-```bash
-pip install -e .
-```
-
-Install with development dependencies:
-
-```bash
-pip install -e .[dev]
+token-trim --help
 ```
 
 ---
@@ -96,11 +71,13 @@ pip install -e .[dev]
 
 ### Basic Usage
 
-Prune a Python file or log file:
+Prune a Python file or log file.
 
 ```bash
 token-trim path/to/file.py
 ```
+
+---
 
 ### Copy Output to the Clipboard
 
@@ -138,7 +115,7 @@ token-trim path/to/file.py -w
 
 By default, `token-trim` uses the `gpt-4o` tokenizer.
 
-Use a different tokenizer:
+Use a different tokenizer model:
 
 ```bash
 token-trim path/to/file.py --model gpt-3.5-turbo
@@ -154,7 +131,7 @@ token-trim path/to/file.py -m gpt-3.5-turbo
 
 ### Process an Entire Directory
 
-Recursively prune all supported files in a directory.
+Recursively prune all supported files within a directory.
 
 ```bash
 token-trim path/to/folder/
@@ -189,41 +166,13 @@ token-trim --help
 
 ---
 
-## Development
-
-### Run Unit Tests
-
-```bash
-pytest
-```
-
-### Run the Linter
-
-```bash
-ruff check .
-```
-
-### Format the Code
-
-```bash
-black .
-```
-
-### Build Package Distributions
-
-```bash
-python -m build
-```
-
----
-
 ## Tech Stack
 
-- Python
-- AST (`ast`)
-- Typer
-- Rich
-- tiktoken
+* Python
+* AST (`ast`)
+* Typer
+* Rich
+* tiktoken
 
 ---
 
@@ -231,11 +180,13 @@ python -m build
 
 Contributions are welcome.
 
-Please read the project's **CONTRIBUTING.md** before opening an issue or submitting a pull request.
+If you'd like to contribute, please read **CONTRIBUTING.md** for instructions on setting up a development environment, running tests, and submitting pull requests.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the **LICENSE** file for details.
+This project is licensed under the MIT License. See the **LICENSE** file for more information.
 
+```
+```
