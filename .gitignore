@@ -14,3 +14,8 @@ env/
 .vscode/
 .idea/
 EOF
+
+# Python packaging and build artifacts
+dist/
+build/
+*.egg-info/

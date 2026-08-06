@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "token-trim"
+name = "token-trim-cli"
 version = "0.1.0"
 description = "Intelligently prune Python code and logs to optimize LLM context window tokens and reduce API costs."
 readme = "README.md"
