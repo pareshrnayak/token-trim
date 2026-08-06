@@ -1,4 +1,3 @@
-````markdown
 <p align="center">
   <img src="assets/token-trim-banner.svg" alt="token-trim banner" width="100%">
 </p>
@@ -239,4 +238,4 @@ Please read the project's **CONTRIBUTING.md** before opening an issue or submitt
 ## License
 
 This project is licensed under the MIT License. See the **LICENSE** file for details.
-````
+
