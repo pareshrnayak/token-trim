@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "token-trim"
+version = "0.1.0"
+description = "Intelligently prune Python code and logs to optimize LLM context window tokens and reduce API costs."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+  { name = "Paresh Nayak" }
+]
+keywords = [
+  "llm",
+  "ast",
+  "tiktoken",
+  "tokens",
+  "prompt-engineering",
+  "cli",
+  "python",
+  "context-window"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Code Generators",
+  "Topic :: Utilities"
+]
+
+dependencies = [
+  "typer>=0.9.0",
+  "rich>=13.0.0",
+  "tiktoken>=0.5.0",
+  "pyperclip>=1.8.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "black",
+  "ruff"
+]
+
+[project.urls]
+Homepage = "https://github.com/pareshrnayak/token-trim"
+Repository = "https://github.com/pareshrnayak/token-trim"
+Issues = "https://github.com/pareshrnayak/token-trim/issues"
+
+[project.scripts]
+token-trim = "app:app"
+
+# Explicitly tell Hatchling to include app.py for single-file CLI layouts
+[tool.hatch.build.targets.wheel]
+include = [
+  "/app.py"
+]
